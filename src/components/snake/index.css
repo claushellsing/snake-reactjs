@@ -1,0 +1,7 @@
+.snakeGrid {
+  display: grid;
+}
+
+.part {
+  background-color: black;
+}
