@@ -1,27 +1,27 @@
 import React from 'react'
 import './index.css'
 
-export default function Snake({ snakeMap, columns, rows, style }) {
+export default function Layer({ coords, columns, rows, style, color }) {
   return (
     <div
-      className={'snakeGrid'}
+      className={'grid'}
       style={{
         ...style,
         gridTemplateColumns: `repeat(${columns}, 18px)`,
         gridTemplateRows: `repeat(${rows}, 18px)`,
       }}
     >
-      {snakeMap.map(([row, column], key) => {
+      {coords.map(([row, column], key) => {
         return (
           <div
             key={`${key}`}
             className="part"
             style={{
-              gridArea: `${row} / ${column} / ${row + 1} / ${column + 1}`,
+              gridArea: `${row + 1} / ${column + 1} / ${row + 2} / ${column +
+                2}`,
+              backgroundColor: color,
             }}
-          >
-            {key === 0 ? 'o' : 'x'}
-          </div>
+          ></div>
         )
       })}
     </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import './index.css'
 
-function Cell({ isFill }) {
+function Cell() {
   return <div className={`cell`}></div>
 }
 

@@ -3,14 +3,21 @@ import Cell from '../cell'
 
 import './index.css'
 
-function Grid({ map, rows, columns, style }) {
-  const gridRows = []
+function getGrid(rows, columns) {
+  const grid = []
 
   for (let i = 0; i < rows; i++) {
+    grid[i] = []
     for (let j = 0; j < columns; j++) {
-      gridRows.push(<Cell key={`${i}-${j}`}></Cell>)
+      grid[i].push(<Cell key={`${i}-${j}`}></Cell>)
     }
   }
+
+  return grid
+}
+
+function Grid({ map, rows, columns, style }) {
+  const gridRows = React.useRef(getGrid(rows, columns))
 
   return (
     <div
@@ -20,7 +27,7 @@ function Grid({ map, rows, columns, style }) {
         gridTemplateRows: `repeat(${rows}, 18px)`,
       }}
     >
-      {gridRows}
+      {gridRows.current}
     </div>
   )
 }
